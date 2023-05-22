@@ -3,8 +3,8 @@ const getSERVICES = require("../services/index.service");
 const { HTTP_STATUS, HttpError } = require("../utils/api.utils");
 const { generateToken } = require("../utils/session.utils");
 
-const { usersService } = getSERVICES();
-const { SESSION_KEY } = ENV_CONFIG;
+const { usersService, mailingService } = getSERVICES();
+const { SESSION_KEY, MAILING_USER } = ENV_CONFIG;
 
 class SessionController {
   static async login(req, res, next) {
@@ -24,6 +24,13 @@ class SessionController {
         message: "User logued in successfully!",
         user,
       };
+      mailingService.sendMail({
+        from: MAILING_USER,
+        to: user.email,
+        subject: "Felicitaciones! Tu LogIn fue exitoso",
+        html: "<h1>Bienvenido!</h1>",
+        attachments,
+      });
       return res.status(HTTP_STATUS.OK).json(response);
     } catch (error) {
       next(error);
