@@ -1,8 +1,8 @@
 const SaveUserDTO = require("../models/dtos/users.dto");
-const UsersService = require("../services/users.service");
+const getSERVICES = require("../services/index.service");
 const { HTTP_STATUS } = require("../utils/api.utils");
 
-const usersService = new UsersService();
+const { usersService } = getSERVICES();
 
 class UsersController {
   static async generateUsers(req, res, next) {
@@ -36,6 +36,21 @@ class UsersController {
     const { uid } = req.params;
     try {
       const user = await usersService.getUserById(uid);
+      const response = {
+        success: true,
+        user,
+      };
+      res.status(HTTP_STATUS.OK).json(response);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getUserByEmail(req, res, next) {
+    const payload = req.body;
+    const { email, password } = payload;
+    try {
+      const user = await usersService.getUserByEmail(email);
       const response = {
         success: true,
         user,

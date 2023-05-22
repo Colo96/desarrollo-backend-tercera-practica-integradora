@@ -58,6 +58,8 @@ const generateUser = () => {
     first_name: faker.person.firstName(),
     last_name: faker.person.lastName(),
     email: faker.internet.email(),
+    password: faker.internet.password(),
+    github_username: faker.internet.userName(),
     role: "USER",
     orders: ordersIds,
   };

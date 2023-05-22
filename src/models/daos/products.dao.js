@@ -2,7 +2,7 @@ const ProductsModel = require("../schema/products.schema");
 const { generateProduct } = require("../../utils/mock.utils");
 
 class ProductsDAO {
-  async generateProducts(total) {
+  async generateProduct(total) {
     const products = Array.from({ length: total }, () => generateProduct());
     const generatedProducts = await ProductsModel.create(products);
     return generatedProducts;

@@ -6,6 +6,7 @@ const router = Router();
 router.post("/mockingusers/:total", UserController.generateUsers);
 router.get("/", UserController.getUsers);
 router.get("/:uid", UserController.getUserById);
+router.get("/email", UserController.getUserByEmail);
 router.post("/", UserController.createUser);
 router.put("/:uid", UserController.updateUserById);
 router.delete("/:uid", UserController.deleteUserById);

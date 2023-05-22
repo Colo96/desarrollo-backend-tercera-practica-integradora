@@ -9,12 +9,12 @@ const usersDAO = new UsersDAO();
 const ordersDAO = new OrdersDAO();
 
 const getDAOS = () => {
-    return {
-        businessesDAO,
-        productsDAO,
-        usersDAO,
-        ordersDAO
-    }
-}
+  return {
+    businessesDAO,
+    productsDAO,
+    usersDAO,
+    ordersDAO,
+  };
+};
 
 module.exports = getDAOS;

@@ -1,7 +1,8 @@
+const getSERVICES = require("../services/index.service");
 const OrdersService = require("../services/orders.service");
 const { HTTP_STATUS } = require("../utils/api.utils");
 
-const ordersService = new OrdersService();
+const { ordersService } = getSERVICES();
 
 class OrdersController {
   static async generateOrders(req, res, next) {

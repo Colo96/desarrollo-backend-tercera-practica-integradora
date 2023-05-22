@@ -1,7 +1,8 @@
+const getSERVICES = require("../services/index.service");
 const ProductsService = require("../services/products.service");
 const { HTTP_STATUS } = require("../utils/api.utils");
 
-const productsService = new ProductsService();
+const { productsService } = getSERVICES();
 
 class ProductsController {
   static async generateProducts(req, res, next) {

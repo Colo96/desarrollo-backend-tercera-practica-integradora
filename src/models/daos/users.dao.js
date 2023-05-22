@@ -14,12 +14,12 @@ class UsersDAO {
   }
 
   async getUserById(id) {
-    const user = await UsersModel.findOne({ _id: id }).lean();
+    const user = await UsersModel.findById({ _id: id }).lean();
     return user;
   }
 
   async getUserByEmail(email) {
-    const user = await UsersModel.findOne({ email }, { __v: false }).lean();
+    const user = await UsersModel.findOne({ email: email }).lean();
     return user;
   }
 

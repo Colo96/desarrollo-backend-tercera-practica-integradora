@@ -2,7 +2,7 @@ const { generateOrder } = require("../../utils/mock.utils");
 const OrdersModel = require("../schema/orders.schema");
 
 class OrdersDAO {
-  async generateOrders(total) {
+  async generateOrder(total) {
     const orders = Array.from({ length: total }, () => generateOrder());
     const generatedOrders = await OrdersModel.create(orders);
     return generatedOrders;

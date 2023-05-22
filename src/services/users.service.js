@@ -32,15 +32,27 @@ class UsersService {
     return user;
   }
 
+  async getUserByEmail(email) {
+    if (!email) {
+      throw new HttpError("Missing param", HTTP_STATUS.BAD_REQUEST);
+    }
+    const user = await usersDAO.getUserByEmail(email);
+    if (!user) {
+      throw new HttpError("User not found", HTTP_STATUS.NOT_FOUND);
+    }
+    return user;
+  }
+
   async createUser(payload) {
-    const { first_name, last_name, email, role } = payload;
-    if (!first_name || !last_name || !email) {
+    const { first_name, last_name, email, password, role } = payload;
+    if (!first_name || !last_name || !email || !password) {
       throw new HttpError("Missing fields", HTTP_STATUS.BAD_REQUEST);
     }
     if (
       typeof user.first_name !== "string" ||
       typeof user.last_name !== "string" ||
-      typeof user.email !== "string"
+      typeof user.email !== "string" ||
+      typeof user.password !== "string"
     ) {
       throw new HttpError(
         generateUserErrorInfo(payload),
@@ -51,6 +63,7 @@ class UsersService {
       first_name,
       last_name,
       email,
+      password,
       role,
       orders: [],
     };
@@ -59,8 +72,8 @@ class UsersService {
   }
 
   async updateUserById(id, payload) {
-    const { first_name, last_name, email } = payload;
-    if (!first_name || !last_name || !email) {
+    const { first_name, last_name, email, password } = payload;
+    if (!first_name || !last_name || !email || !password) {
       throw new HttpError("Missing fields", HTTP_STATUS.BAD_REQUEST);
     }
     if (!id) {
