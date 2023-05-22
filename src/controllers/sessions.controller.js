@@ -4,6 +4,7 @@ const { HTTP_STATUS, HttpError } = require("../utils/api.utils");
 const { generateToken } = require("../utils/session.utils");
 
 const { usersService } = getSERVICES();
+const { SESSION_KEY } = ENV_CONFIG;
 
 class SessionController {
   static async login(req, res, next) {
@@ -14,7 +15,7 @@ class SessionController {
         throw new HttpError(HTTP_STATUS.BAD_REQUEST, "Wrong email or password");
       }
       const access_token = generateToken(user);
-      res.cookie(ENV.SESSION_KEY, access_token, {
+      res.cookie(SESSION_KEY, access_token, {
         maxAge: 60 * 60 * 60 * 24 * 1000,
         httpOnly: true,
       });
@@ -29,19 +30,19 @@ class SessionController {
     }
   }
 
-  // static async loginGithub(req, res, next) {
-  //   const user = req.user;
-  //   const access_token = generateToken(user);
-  //   res.cookie(ENV_CONFIG.SESSION_KEY, access_token, {
-  //     maxAge: 60 * 60 * 60 * 24 * 1000,
-  //     httpOnly: true,
-  //   });
-  //   const response = {
-  //     success: true,
-  //     user,
-  //   };
-  //   return res.status(HTTP_STATUS.OK).json(response);
-  // }
+  static async loginGithub(req, res, next) {
+    const user = req.user;
+    const access_token = generateToken(user);
+    res.cookie(ENV_CONFIG.SESSION_KEY, access_token, {
+      maxAge: 60 * 60 * 60 * 24 * 1000,
+      httpOnly: true,
+    });
+    const response = {
+      success: true,
+      user,
+    };
+    return res.status(HTTP_STATUS.OK).json(response);
+  }
 
   static async currentSession(req, res, next) {
     try {
