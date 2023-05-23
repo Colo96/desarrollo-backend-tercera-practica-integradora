@@ -94,3 +94,18 @@
 {"level":"info","message":"Server is up and running on http://localhost:8080"}
 {"level":"info","message":"Connected to DB successfully!"}
 {"level":"info","message":"Server is up and running on http://localhost:8080"}
+{"level":"info","message":"Connected to DB successfully!"}
+{"level":"info","message":"Server is up and running on http://localhost:8080"}
+{"level":"info","message":"Connected to DB successfully!"}
+{"level":"info","message":"Server is up and running on http://localhost:8080"}
+{"level":"info","message":"Connected to DB successfully!"}
+{"level":"info","message":"Server is up and running on http://localhost:8080"}
+{"level":"error","message":"There was an error trying to connect to mongodb+srv://admin:898524Abc+@coder.4adukwg.mongodb.net/coder-ecommerce?retryWrites=true&w=majority"}
+{"level":"info","message":"Connected to DB successfully!"}
+{"level":"info","message":"Server is up and running on http://localhost:8080"}
+{"level":"info","message":"Connected to DB successfully!"}
+{"level":"info","message":"Server is up and running on http://localhost:8080"}
+{"level":"info","message":"Connected to DB successfully!"}
+{"level":"info","message":"Server is up and running on http://localhost:8080"}
+{"level":"info","message":"Connected to DB successfully!"}
+{"level":"info","message":"Server is up and running on http://localhost:8080"}
