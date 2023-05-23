@@ -44,15 +44,17 @@ class UsersService {
   }
 
   async createUser(payload) {
-    const { first_name, last_name, email, password, role } = payload;
-    if (!first_name || !last_name || !email || !password) {
+    const { first_name, last_name, email, password, github_username, role } =
+      payload;
+    if (!first_name || !last_name || !email || !password || !github_username) {
       throw new HttpError("Missing fields", HTTP_STATUS.BAD_REQUEST);
     }
     if (
       typeof user.first_name !== "string" ||
       typeof user.last_name !== "string" ||
       typeof user.email !== "string" ||
-      typeof user.password !== "string"
+      typeof user.password !== "string" ||
+      typeof user.github_username !== "string"
     ) {
       throw new HttpError(
         generateUserErrorInfo(payload),
@@ -64,6 +66,7 @@ class UsersService {
       last_name,
       email,
       password,
+      github_username,
       role,
       orders: [],
     };
