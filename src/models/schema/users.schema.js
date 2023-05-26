@@ -19,6 +19,7 @@ const schema = new Schema({
   },
   password: {
     type: String,
+    required: true,
   },
   github_username: {
     type: String,

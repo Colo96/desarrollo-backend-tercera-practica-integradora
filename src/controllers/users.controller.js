@@ -65,6 +65,7 @@ class UsersController {
     const payload = req.body;
     try {
       const userPayload = new SaveUserDTO(payload);
+      console.log(userPayload);
       const newUser = await usersService.createUser(userPayload);
       const response = {
         success: true,
