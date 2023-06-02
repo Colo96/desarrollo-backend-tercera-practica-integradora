@@ -50,11 +50,11 @@ class UsersService {
       throw new HttpError("Missing fields", HTTP_STATUS.BAD_REQUEST);
     }
     if (
-      typeof user.first_name !== "string" ||
-      typeof user.last_name !== "string" ||
-      typeof user.email !== "string" ||
-      typeof user.password !== "string" ||
-      typeof user.github_username !== "string"
+      typeof first_name !== "string" ||
+      typeof last_name !== "string" ||
+      typeof email !== "string" ||
+      typeof password !== "string" ||
+      typeof github_username !== "string"
     ) {
       throw new HttpError(
         generateUserErrorInfo(payload),
