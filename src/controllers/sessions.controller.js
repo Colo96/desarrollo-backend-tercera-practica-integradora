@@ -29,7 +29,6 @@ class SessionController {
         to: user.email,
         subject: "Felicitaciones! Tu LogIn fue exitoso",
         html: "<h1>Bienvenido!</h1>",
-        attachments,
       });
       return res.status(HTTP_STATUS.OK).json(response);
     } catch (error) {
