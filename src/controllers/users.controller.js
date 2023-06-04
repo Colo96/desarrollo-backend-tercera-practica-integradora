@@ -46,21 +46,6 @@ class UsersController {
     }
   }
 
-  static async getUserByEmail(req, res, next) {
-    const payload = req.body;
-    const { email, password } = payload;
-    try {
-      const user = await usersService.getUserByEmail(email);
-      const response = {
-        success: true,
-        user,
-      };
-      res.status(HTTP_STATUS.OK).json(response);
-    } catch (error) {
-      next(error);
-    }
-  }
-
   static async createUser(req, res, next) {
     const payload = req.body;
     try {
