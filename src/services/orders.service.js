@@ -35,9 +35,6 @@ class OrdersService {
   async createOrder(payload) {
     const { business, user, products } = payload;
     if (!business || !user) {
-      throw new HttpError("Missing required fields", HTTP_STATUS.BAD_REQUEST);
-    }
-    if (typeof order.order_number !== "string") {
       throw new HttpError(
         generateOrderErrorInfo(payload),
         HTTP_STATUS.BAD_REQUEST
